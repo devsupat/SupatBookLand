@@ -1,35 +1,60 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perpustakaan Digital</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    button {
-      font-size: 20px;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mengalihkan...</title>
+<style>
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 </head>
-<body>
-  <h1>Selamat Datang di Perpustakaan Digital Kami</h1>
-  <p>Klik tombol di bawah untuk mengakses sumber daya kami:</p>
-  <button id='enterLibrary'>Masuk Perpustakaan</button>
+<body onload="redirectNow()">
+<div class="loader"></div>
 
-  <script>
-    document.getElementById('enterLibrary').addEventListener('click', function() {
-      var ngrokUrl = 'https://25d3-103-151-34-17.ngrok-free.app';
-      window.open(ngrokUrl, '_blank');
-    });
-  </script>
+<script>
+function redirectNow() {
+  var targetUrl = 'https://25d3-103-151-34-17.ngrok-free.app/';
+  
+  // Metode 1: Redirect langsung
+  window.location.replace(targetUrl);
+  
+  // Metode 2: Backup dengan setTimeout
+  setTimeout(function() {
+    window.location.href = targetUrl;
+  }, 50);
+  
+  // Metode 3: Mencoba dengan form submit
+  var form = document.createElement('form');
+  form.method = 'GET';
+  form.action = targetUrl;
+  document.body.appendChild(form);
+  form.submit();
+}
+
+// Mencegah interaksi pengguna
+document.oncontextmenu = function() { return false; };
+document.onkeydown = function() { return false; };
+document.onclick = function() { return false; };
+</script>
 </body>
 </html>
