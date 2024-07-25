@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>SupatBookLand</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
-        h1 { color: #333; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perpustakaan Digital</title>
 </head>
 <body>
-    <h1>Welcome to SupatBookLand</h1>
-    <p>This is a placeholder page for SupatBookLand. You can add your content here.</p>
-    <p>To access the original content, please use the following steps:</p>
-    <ol>
-        <li>Open your browser's developer tools (usually F12 or right-click and select "Inspect")</li>
-        <li>Go to the "Network" tab</li>
-        <li>Click on the "Fetch/XHR" filter</li>
-        <li>Click the button below to load content</li>
-    </ol>
-    <button onclick="loadContent()">Load Content</button>
-    <div id="content"></div>
+  <div id="content">
+    <div style="text-align: center; padding: 50px;">
+      <h1>Selamat Datang di Perpustakaan Digital Kami</h1>
+      <p>Klik tombol di bawah untuk mengakses sumber daya kami:</p>
+      <button id="enterLibrary" style="font-size: 20px; padding: 10px 20px;">Masuk Perpustakaan</button>
+    </div>
+  </div>
 
-    <script>
-    function loadContent() {
-        fetch('https://92bd-103-151-34-21.ngrok-free.app/', {
-            headers: {
-                'ngrok-skip-browser-warning': '1'
-            }
-        })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('content').innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('content').innerHTML = 'Error loading content. Please try again.';
-        });
-    }
-    </script>
+  <script>
+    //<![CDATA[
+    document.getElementById('enterLibrary').addEventListener('click', function() {
+      var ngrokUrl = 'https://92bd-103-151-34-21.ngrok-free.app';
+      
+      // Buat permintaan dengan header khusus
+      fetch(ngrokUrl, {
+        method: 'GET',
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+          'User-Agent': 'PerpustakaanDigitalSekolah/1.0'
+        },
+        mode: 'no-cors' // Penting untuk permintaan lintas domain
+      }).then(function() {
+        // Setelah permintaan berhasil, alihkan ke URL ngrok
+        window.location.href = ngrokUrl;
+      }).catch(function(error) {
+        console.error('Error:', error);
+        // Jika terjadi kesalahan, tetap coba alihkan
+        window.location.href = ngrokUrl;
+      });
+    });
+    //]]>
+  </script>
 </body>
 </html>
