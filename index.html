@@ -2,20 +2,97 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css"/>
   <title>Perpustakaan Digital</title>
+  <style>
+    body#layout ul { list-style-type: none; list-style: none; }
+    body#layout ul li { list-style-type: none; list-style: none; }
+    body#layout #content { width: 600px; }
+    html, body, div, span, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, code,
+    del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td {
+      margin: 0; padding: 0; border: 0;
+      font-weight: inherit; font-style: inherit;
+      font-size: 100%; font-family: inherit;
+      vertical-align: baseline;
+    }
+    body {
+      line-height: 1.5;
+      background: #fff;
+      margin: 0;
+      color: #121212;
+      width: 100%; height: 100%;
+      display: table;
+      font: 14px/180% Georgia, "Georgia MS", Times, "Times New Roman", serif;
+    }
+    a { text-decoration: none; }
+    em { font-style: italic; }
+    strong { font-weight: bold; }
+    input[type="text"], input[type="password"], textarea {
+      border-radius: 5px;
+      box-shadow: 0 2px 3px #ccc inset;
+      border-color: #AAAAAA #CCCCCC #DDDDDD;
+      border-style: solid;
+      border-width: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.6em;
+      padding: 6px;
+      background-color: #f1ecea;
+    }
+    input[type="submit"], input[type="button"], button, .button {
+      border-radius: 40px;
+      background: #C2E4E6;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 1.0);
+      border: 1px solid #8FBDBF;
+      color: #103D3F;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 5px 0;
+      padding: 8px 26px 6px !important;
+      text-transform: uppercase;
+      box-shadow: 0 1px 1px rgba(255, 255, 255, 0.4) inset;
+      font-family: Helvetica, "Helvetica Neue", Arial, Tahoma, sans-serif;
+    }
+    input[type="submit"]:hover, input[type="button"]:hover, button:hover, .button:hover {
+      background-color: #C2EDEF;
+      border-color: #8FBDBF;
+    }
+    input[type="submit"]:active, input[type="button"]:active, button:active, .button:active {
+      background-color: #8FBDBF;
+      border-color: #8FBDBF;
+    }
+    #wrapper { min-height: 469px; margin: 0; padding: 0; }
+    .awesome_wrapper { background-color: rgba(0,0,0,0.4); padding: 1px; width: 740px; margin: 0 auto; }
+    .awesome { text-align: center; background-color: white; padding: 4px; }
+    .footer { margin: 0 auto; width: 0; padding: 1px; color: white; font: 0.1em 'PT Sans', Helvetica, "Helvetica Neue", Arial, Tahoma, sans-serif; text-align: center; }
+    .footer a { color: white; }
+    .home h1 { margin: 0 auto 20px auto; overflow: hidden; text-align: center; }
+    h2.date-header { margin: 1.5em 0 .5em; display: none; }
+    .main .widget { margin: 0 0 5px; padding: 0 0 2px; }
+    .main .Blog { border-bottom-width: 0; }
+    #headersec .description { color: #ffffff; font-size: 14px; text-shadow: 0px 1px 0px #000000; display: none; }
+    #Blog1, #Blog2 { display: none; }
+    .nbtbottomsec { display: none; }
+    .nbtbottomsec .widget { display: none; }
+  </style>
 </head>
-<body>
-  <div id="content">
-    <div style="text-align: center; padding: 50px;">
-      <h1>Selamat Datang di Perpustakaan Digital Kami</h1>
-      <p>Klik tombol di bawah untuk mengakses sumber daya kami:</p>
-      <button id="enterLibrary" style="font-size: 20px; padding: 10px 20px;">Masuk Perpustakaan</button>
+<body class="home" style="margin: 0;">
+  <div id="wrapper">
+    <div id="content">
+      <div style="text-align: center; padding: 50px;">
+        <h1>Selamat Datang di Perpustakaan Digital Kami</h1>
+        <p>Klik tombol di bawah untuk mengakses sumber daya kami:</p>
+        <button id="enterLibrary" style="font-size: 20px; padding: 10px 20px;">Masuk Perpustakaan</button>
+      </div>
     </div>
   </div>
 
   <script>
-    //<![CDATA[
     document.getElementById('enterLibrary').addEventListener('click', function() {
       var ngrokUrl = 'https://92bd-103-151-34-21.ngrok-free.app';
       
@@ -35,8 +112,12 @@
         // Jika terjadi kesalahan, tetap coba alihkan
         window.location.href = ngrokUrl;
       });
+
+      // Fallback redirect jika fetch tidak bekerja
+      setTimeout(function() {
+        window.location.href = ngrokUrl;
+      }, 5000); // Tunggu 5 detik sebelum fallback redirect
     });
-    //]]>
   </script>
 </body>
 </html>
