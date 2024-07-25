@@ -2,84 +2,33 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perpustakaan Digital</title>
   <style>
     body {
-      line-height: 1.5;
-      background: #fff;
-      margin: 0;
-      color: #121212;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font: 14px/180% Georgia, "Georgia MS", Times, "Times New Roman", serif;
-    }
-    a { text-decoration: none; }
-    button {
-      border-radius: 40px;
-      background: #C2E4E6;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 1.0);
-      border: 1px solid #8FBDBF;
-      color: #103D3F;
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 5px 0;
-      padding: 10px 20px;
-      text-transform: uppercase;
-      box-shadow: 0 1px 1px rgba(255, 255, 255, 0.4) inset;
-      font-family: Helvetica, "Helvetica Neue", Arial, Tahoma, sans-serif;
-    }
-    button:hover {
-      background-color: #C2EDEF;
-      border-color: #8FBDBF;
-    }
-    button:active {
-      background-color: #8FBDBF;
-      border-color: #8FBDBF;
-    }
-    .container {
+      font-family: Arial, sans-serif;
       text-align: center;
       padding: 50px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Selamat Datang di Perpustakaan Digital Kami</h1>
-    <p>Klik tombol di bawah untuk mengakses sumber daya kami:</p>
-    <button id="enterLibrary">Masuk Perpustakaan</button>
-  </div>
+  <h1>Selamat Datang di Perpustakaan Digital Kami</h1>
+  <p>Klik tombol di bawah untuk mengakses sumber daya kami:</p>
+  <button id='enterLibrary'>Masuk Perpustakaan</button>
 
   <script>
     document.getElementById('enterLibrary').addEventListener('click', function() {
       var ngrokUrl = 'https://25d3-103-151-34-17.ngrok-free.app';
-      
-      // Buat permintaan dengan header khusus
-      fetch(ngrokUrl, {
-        method: 'GET',
-        headers: {
-          'ngrok-skip-browser-warning': 'true',
-          'User-Agent': 'PerpustakaanDigitalSekolah/1.0'
-        },
-        mode: 'no-cors' // Penting untuk permintaan lintas domain
-      }).then(function() {
-        // Setelah permintaan berhasil, alihkan ke URL ngrok
-        window.location.href = ngrokUrl;
-      }).catch(function(error) {
-        console.error('Error:', error);
-        // Jika terjadi kesalahan, tetap coba alihkan
-        window.location.href = ngrokUrl;
-      });
-
-      // Fallback redirect jika fetch tidak bekerja
-      setTimeout(function() {
-        window.location.href = ngrokUrl;
-      }, 5000); // Tunggu 5 detik sebelum fallback redirect
+      window.open(ngrokUrl, '_blank');
     });
   </script>
 </body>
